@@ -1,0 +1,12 @@
+---
+
+openstack_common:
+  - python-openstackclient
+  - openstack-selinux
+  - mariadb
+  - mariadb-server
+  - MySQL-python
+
+personal_preferences:
+  - vim-enhanced
+  - curl

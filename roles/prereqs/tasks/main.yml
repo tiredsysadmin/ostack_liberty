@@ -1,0 +1,32 @@
+---
+### This is a role to install the default applications needed for OpenStack Liberty.
+#### !!!NOTE!!! This is designed for use on a local machine running RHEL/CentOS
+## I might grow it for Ubuntu, someday. Don't count on it.
+#
+## Initial creation: 2017-01-07
+## Author: tiredsysadmin
+# site: https://github.com/tiredsysadmin/ostack_liberty
+#
+
+- include: vars/main.yml
+
+- name: Warn if not the OS or version we expect
+  pause:
+    prompt: "You need to be running CentOS or RHEL 7 for this playbook to work."
+  when: ansible_distribution != "CentOS" or ansible_distribution_major_version != "7"
+
+# EPEL breaks certain backward compatible things in OStack (liberty). We want it removed.
+- name: Remove EPEL
+  yum_repository:
+    name: epel
+    state: absent
+
+- name: Update the machine to most current version
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install the personal pre-requisite packages
+  yum:
+    name: "{{ item }}"
+  with_items: personal_preferences
