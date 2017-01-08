@@ -1,0 +1,5 @@
+- name: Install Openstack Liberty on an owned node
+  hosts: all
+  become: yes
+  roles:
+    - prereqs
