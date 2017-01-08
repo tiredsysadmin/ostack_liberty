@@ -8,7 +8,7 @@
 # site: https://github.com/tiredsysadmin/ostack_liberty
 #
 
-- include: vars/main.yml
+#- include: vars/main.yml
 
 - name: Warn if not the OS or version we expect
   pause:
@@ -28,5 +28,21 @@
 
 - name: Install the personal pre-requisite packages
   yum:
-    name: "{{ item }}"
-  with_items: personal_preferences
+    name: '{{ item }}'
+    state: latest
+#  with_items: personal_preferences
+  with_items:
+    - vim-enhanced
+    - curl
+
+- name: Install the OpenStack pre-requisites
+  yum:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - python-openstackclient
+    - openstack-selinux
+    - mariadb
+    - mariadb-server
+    - MySQL-python
+    - centos-release-openstack-liberty
