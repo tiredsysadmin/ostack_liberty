@@ -1,8 +1,0 @@
----
-### This is a role to install the default applications needed for OpenStack Liberty.
-#### !!!NOTE!!! This is designed for use on a local machine running RHEL/CentOS
-## I might grow it for Ubuntu, someday. Don't count on it.
-#
-## Initial creation: 2017-01-07
-## Author: tiredsysadmin
-# site: https://github.com/tiredsysadmin/ostack_liberty
